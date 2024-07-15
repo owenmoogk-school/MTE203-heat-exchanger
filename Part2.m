@@ -16,9 +16,9 @@ else
     gravity = 9.81; % gravitational constant in m/s
 end
 
-shell_density = @(theta, r, y) 420+80*(cos(theta-pi/2)+5*sin(theta+5*pi/2)) .*r;
+shell_density = @(theta, r, y) (420+80*(cos(theta-pi/2)+5*sin(theta+5*pi/2))) .*r;
 
-r_max = @(theta) sqrt((cos(theta).^2/a^2 + sin(theta).^2/b^2).^(-1));
+r_max = @(theta) sqrt(1./((cos(theta).^2)/(a^2) + (sin(theta).^2)/(b^2)));
 shell_mass = integral3(shell_density, 0, 2*pi, 0, r_max, 0, L);
 
 shell_density_x = @(theta, r, y) shell_density(theta, r, y) .* r.*cos(theta);
