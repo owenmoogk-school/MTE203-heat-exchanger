@@ -79,7 +79,7 @@ capFun = @(y,z,x) ones(size(y));
 cap_volume = integral3(capFun, 0, w, -d/2, d/2, x_min, a);
 
 % Total volume of oil required
-total_volume = shell_volume - 6 * total_tube_volumes + 12 * cap_volume;
+total_volume = shell_volume - 6 * tube_volume + 12 * cap_volume;
 
 % Display results
 fprintf('Volume of the shell: %.5f m^3\n', shell_volume);
